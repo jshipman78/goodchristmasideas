@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import GiftGuideCard from '../../components/GiftGuideCard.astro';
+
+const allGuides = await getCollection('guides');
+const guides = allGuides.filter(guide =>
+  guide.data.category === 'for-him' ||
+  guide.slug.includes('for-him') ||
+  guide.slug.includes('for-dad') ||
+  guide.slug.includes('gifts-for-him')
+);
+
+const relatedGuides = [
+  {
+    title: "Gifts for Dad",
+    description: "Practical, thoughtful gifts he'll actually use",
+    href: "/guides/gifts-for-dad-who-has-everything",
+    emoji: "👨",
+  },
+  {
+    title: "Best Gifts for Him",
+    description: "Top picks for boyfriends, husbands & brothers",
+    href: "/guides/best-gifts-for-him",
+    emoji: "🎩",
+  },
+  {
+    title: "Tech Gifts",
+    description: "Gadgets for the tech lover in your life",
+    href: "/guides/best-tech-gifts",
+    emoji: "📱",
+  },
+  {
+    title: "Gifts Under $50",
+    description: "Great value picks at every price point",
+    href: "/guides/best-gifts-under-50",
+    emoji: "💰",
+  },
+];
+---
+
+<BaseLayout title="Gifts for Him" description="Find the perfect gift for the men in your life. Gift guides for dads, boyfriends, husbands, brothers, and more.">
+  <section class="bg-gradient-to-br from-pine to-christmas-green text-white py-16 px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <span class="text-6xl mb-4 block">🎩</span>
+      <h1 class="text-4xl md:text-5xl font-display font-bold mb-4">
+        Gifts for Him
+      </h1>
+      <p class="text-xl text-gray-200 max-w-2xl mx-auto">
+        Shopping for the men in your life? From tech gadgets to outdoor gear, find gifts he'll actually use and appreciate.
+      </p>
+    </div>
+  </section>
+
+  <section class="max-w-7xl mx-auto px-4 py-12">
+    <h2 class="text-2xl font-display font-bold text-pine mb-8">Gift Guides for Him</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {relatedGuides.map(guide => (
+        <GiftGuideCard {...guide} />
+      ))}
+    </div>
+  </section>
+
+  <section class="bg-gray-50 py-12 px-4">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-display font-bold text-pine mb-6">Tips for Shopping for Him</h2>
+      <div class="prose-custom">
+        <ul class="space-y-3">
+          <li><strong>Listen for hints:</strong> Men often mention things they'd like but won't buy themselves</li>
+          <li><strong>Think practical:</strong> Useful gifts often beat novelty items</li>
+          <li><strong>Quality over quantity:</strong> One great item beats several mediocre ones</li>
+          <li><strong>Consider hobbies:</strong> The best gifts often connect to his interests</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

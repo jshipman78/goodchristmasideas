@@ -1,0 +1,69 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import GiftGuideCard from '../../components/GiftGuideCard.astro';
+
+const relatedGuides = [
+  {
+    title: "Gifts for Mom",
+    description: "Thoughtful presents for grandma",
+    href: "/guides/thoughtful-gifts-for-mom",
+    emoji: "👵",
+  },
+  {
+    title: "Gifts for Dad",
+    description: "Practical gifts for grandpa",
+    href: "/guides/gifts-for-dad-who-has-everything",
+    emoji: "👴",
+  },
+  {
+    title: "Cozy Gifts",
+    description: "Comfort-focused presents",
+    href: "/guides/cozy-christmas-gifts",
+    emoji: "🧣",
+  },
+  {
+    title: "Tech Gifts",
+    description: "Easy-to-use gadgets",
+    href: "/guides/best-tech-gifts",
+    emoji: "📱",
+  },
+];
+---
+
+<BaseLayout title="Gifts for Grandparents" description="Find meaningful gifts for grandma and grandpa. Thoughtful picks they'll treasure.">
+  <section class="bg-gradient-to-br from-amber-600 to-orange-500 text-white py-16 px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <span class="text-6xl mb-4 block">👵👴</span>
+      <h1 class="text-4xl md:text-5xl font-display font-bold mb-4">
+        Gifts for Grandparents
+      </h1>
+      <p class="text-xl text-white/90 max-w-2xl mx-auto">
+        Show grandma and grandpa how much they mean to you with thoughtful, practical gifts.
+      </p>
+    </div>
+  </section>
+
+  <section class="max-w-7xl mx-auto px-4 py-12">
+    <h2 class="text-2xl font-display font-bold text-pine mb-8">Gift Guides for Grandparents</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {relatedGuides.map(guide => (
+        <GiftGuideCard {...guide} />
+      ))}
+    </div>
+  </section>
+
+  <section class="bg-gray-50 py-12 px-4">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-display font-bold text-pine mb-6">Grandparent Gift Ideas</h2>
+      <div class="prose-custom">
+        <ul class="space-y-3">
+          <li><strong>Photo gifts:</strong> Custom photo books, digital frames, or calendars with family photos</li>
+          <li><strong>Comfort items:</strong> Soft blankets, cozy slippers, quality robes</li>
+          <li><strong>Easy tech:</strong> Simplified tablets, large-button remotes, smart speakers</li>
+          <li><strong>Experience gifts:</strong> Restaurant gift cards, streaming subscriptions, magazine subscriptions</li>
+          <li><strong>Time together:</strong> Plan a visit, video call schedule, or shared activity</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

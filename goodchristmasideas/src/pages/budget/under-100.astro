@@ -1,0 +1,78 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import GiftGuideCard from '../../components/GiftGuideCard.astro';
+
+const relatedGuides = [
+  {
+    title: "Best Gifts for Him",
+    description: "Quality picks he'll love",
+    href: "/guides/best-gifts-for-him",
+    emoji: "🎩",
+  },
+  {
+    title: "Best Gifts for Her",
+    description: "Thoughtful presents",
+    href: "/guides/best-gifts-for-her",
+    emoji: "👠",
+  },
+  {
+    title: "Tech Gifts",
+    description: "Gadgets under $100",
+    href: "/guides/best-tech-gifts",
+    emoji: "📱",
+  },
+  {
+    title: "Cozy Gifts",
+    description: "Comfort-focused presents",
+    href: "/guides/cozy-christmas-gifts",
+    emoji: "🧣",
+  },
+];
+---
+
+<BaseLayout title="Gifts Under $100" description="Premium gifts at a reasonable price. Quality presents under $100 for special people.">
+  <section class="bg-gradient-to-br from-purple-500 to-pink-600 text-white py-16 px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <span class="text-6xl mb-4 block">✨</span>
+      <h1 class="text-4xl md:text-5xl font-display font-bold mb-4">
+        Gifts Under $100
+      </h1>
+      <p class="text-xl text-white/90 max-w-2xl mx-auto">
+        Premium quality without the premium price tag. Perfect for people who deserve something special.
+      </p>
+    </div>
+  </section>
+
+  <section class="max-w-7xl mx-auto px-4 py-12">
+    <h2 class="text-2xl font-display font-bold text-pine mb-8">Browse by Recipient</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {relatedGuides.map(guide => (
+        <GiftGuideCard {...guide} />
+      ))}
+    </div>
+  </section>
+
+  <section class="bg-gray-50 py-12 px-4">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-display font-bold text-pine mb-6">Top Picks Under $100</h2>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="bg-white p-4 rounded-lg shadow-sm">
+          <p class="font-semibold">UGG Scuffette Slippers - $95</p>
+          <p class="text-sm text-gray-600">Genuine sheepskin comfort</p>
+        </div>
+        <div class="bg-white p-4 rounded-lg shadow-sm">
+          <p class="font-semibold">Anker 3-in-1 Charger - $90</p>
+          <p class="text-sm text-gray-600">Phone, watch, earbuds</p>
+        </div>
+        <div class="bg-white p-4 rounded-lg shadow-sm">
+          <p class="font-semibold">Ridge Wallet - $95</p>
+          <p class="text-sm text-gray-600">Slim RFID-blocking</p>
+        </div>
+        <div class="bg-white p-4 rounded-lg shadow-sm">
+          <p class="font-semibold">Olaplex Hair Set - $90</p>
+          <p class="text-sm text-gray-600">Bond-building treatment</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

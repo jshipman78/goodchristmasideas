@@ -1,0 +1,69 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import GiftGuideCard from '../../components/GiftGuideCard.astro';
+
+const relatedGuides = [
+  {
+    title: "Cool Gifts for Teens",
+    description: "Gifts that won't get an eye roll",
+    href: "/guides/cool-gifts-for-teens",
+    emoji: "🎮",
+  },
+  {
+    title: "Tech Gifts",
+    description: "Gadgets for the tech lover",
+    href: "/guides/best-tech-gifts",
+    emoji: "📱",
+  },
+  {
+    title: "Gifts Under $50",
+    description: "Great value picks",
+    href: "/guides/best-gifts-under-50",
+    emoji: "💰",
+  },
+  {
+    title: "Stocking Stuffers",
+    description: "Small gifts with big impact",
+    href: "/guides/best-stocking-stuffers",
+    emoji: "🧦",
+  },
+];
+---
+
+<BaseLayout title="Gifts for Teens" description="Find gifts teenagers actually want. From tech to style, these picks are parent-approved and teen-tested.">
+  <section class="bg-gradient-to-br from-purple-600 to-blue-500 text-white py-16 px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <span class="text-6xl mb-4 block">🎮</span>
+      <h1 class="text-4xl md:text-5xl font-display font-bold mb-4">
+        Gifts for Teens
+      </h1>
+      <p class="text-xl text-white/90 max-w-2xl mx-auto">
+        Shopping for teenagers is tough. These gifts balance cool factor with parent approval.
+      </p>
+    </div>
+  </section>
+
+  <section class="max-w-7xl mx-auto px-4 py-12">
+    <h2 class="text-2xl font-display font-bold text-pine mb-8">Gift Guides for Teens</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {relatedGuides.map(guide => (
+        <GiftGuideCard {...guide} />
+      ))}
+    </div>
+  </section>
+
+  <section class="bg-gray-50 py-12 px-4">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-display font-bold text-pine mb-6">Teen Gift Strategy</h2>
+      <div class="prose-custom">
+        <ul class="space-y-3">
+          <li><strong>When in doubt, tech wins:</strong> AirPods, speakers, and gaming gear are safe bets</li>
+          <li><strong>Gift cards aren't lazy:</strong> Teens often prefer choosing their own items</li>
+          <li><strong>Follow the trends:</strong> TikTok-viral items are usually popular for a reason</li>
+          <li><strong>Room decor:</strong> LED lights and cozy items let them personalize their space</li>
+          <li><strong>Ask subtly:</strong> "What are your friends into?" often reveals their interests</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

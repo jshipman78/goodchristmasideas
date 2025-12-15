@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import GiftGuideCard from '../../components/GiftGuideCard.astro';
+
+const relatedGuides = [
+  {
+    title: "Best Toys for Kids",
+    description: "Fun, educational toys they'll love",
+    href: "/guides/best-toys-for-kids",
+    emoji: "🧸",
+  },
+  {
+    title: "Stocking Stuffers",
+    description: "Small but mighty gift ideas",
+    href: "/guides/best-stocking-stuffers",
+    emoji: "🧦",
+  },
+  {
+    title: "Gifts Under $25",
+    description: "Budget-friendly ideas that don't feel cheap",
+    href: "/guides/best-gifts-under-25",
+    emoji: "💵",
+  },
+  {
+    title: "Tech Gifts",
+    description: "Age-appropriate gadgets and games",
+    href: "/guides/best-tech-gifts",
+    emoji: "📱",
+  },
+];
+---
+
+<BaseLayout title="Gifts for Kids" description="Find the best toys and gifts for children. Age-appropriate picks from toddlers to tweens.">
+  <section class="bg-gradient-to-br from-yellow-400 to-orange-500 text-white py-16 px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <span class="text-6xl mb-4 block">🧸</span>
+      <h1 class="text-4xl md:text-5xl font-display font-bold mb-4">
+        Gifts for Kids
+      </h1>
+      <p class="text-xl text-white/90 max-w-2xl mx-auto">
+        Toys and gifts that spark imagination, encourage learning, and stand up to kid-level play.
+      </p>
+    </div>
+  </section>
+
+  <section class="max-w-7xl mx-auto px-4 py-12">
+    <h2 class="text-2xl font-display font-bold text-pine mb-8">Gift Guides for Kids</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {relatedGuides.map(guide => (
+        <GiftGuideCard {...guide} />
+      ))}
+    </div>
+  </section>
+
+  <section class="bg-gray-50 py-12 px-4">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-display font-bold text-pine mb-6">Shopping Tips by Age</h2>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <h3 class="font-bold text-lg mb-2">Ages 3-5</h3>
+          <p class="text-gray-600 text-sm">Focus on imaginative play, building toys, and art supplies. Avoid small parts.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <h3 class="font-bold text-lg mb-2">Ages 6-8</h3>
+          <p class="text-gray-600 text-sm">STEM toys, board games, and creative kits hit the sweet spot. Active toys work great too.</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <h3 class="font-bold text-lg mb-2">Ages 9-12</h3>
+          <p class="text-gray-600 text-sm">More complex building sets, video games, and hobby-specific gifts. Consider their interests.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

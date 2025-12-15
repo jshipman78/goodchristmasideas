@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import GiftGuideCard from '../../components/GiftGuideCard.astro';
+
+const relatedGuides = [
+  {
+    title: "Gifts Under $25",
+    description: "Budget-friendly ideas that don't feel cheap",
+    href: "/guides/best-gifts-under-25",
+    emoji: "💵",
+  },
+  {
+    title: "Stocking Stuffers",
+    description: "Small gifts with big impact",
+    href: "/guides/best-stocking-stuffers",
+    emoji: "🧦",
+  },
+  {
+    title: "White Elephant Gifts",
+    description: "Hilarious crowd-pleasers",
+    href: "/guides/funny-white-elephant-gifts",
+    emoji: "🐘",
+  },
+];
+---
+
+<BaseLayout title="Gifts Under $25" description="Find great gifts without breaking the bank. Quality presents under $25 for everyone on your list.">
+  <section class="bg-gradient-to-br from-green-500 to-emerald-600 text-white py-16 px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <span class="text-6xl mb-4 block">💵</span>
+      <h1 class="text-4xl md:text-5xl font-display font-bold mb-4">
+        Gifts Under $25
+      </h1>
+      <p class="text-xl text-white/90 max-w-2xl mx-auto">
+        Prove that great gifts don't have to be expensive. These picks punch above their price point.
+      </p>
+    </div>
+  </section>
+
+  <section class="max-w-7xl mx-auto px-4 py-12">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {relatedGuides.map(guide => (
+        <GiftGuideCard {...guide} />
+      ))}
+    </div>
+  </section>
+
+  <section class="bg-gray-50 py-12 px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <p class="text-gray-600">
+        <a href="/guides/best-gifts-under-25" class="text-christmas-red font-semibold hover:underline">
+          View our complete Under $25 gift guide →
+        </a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>

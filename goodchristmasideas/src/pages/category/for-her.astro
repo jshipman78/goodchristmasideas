@@ -1,0 +1,68 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import GiftGuideCard from '../../components/GiftGuideCard.astro';
+
+const relatedGuides = [
+  {
+    title: "Gifts for Mom",
+    description: "Heartfelt presents to show her you care",
+    href: "/guides/thoughtful-gifts-for-mom",
+    emoji: "👩",
+  },
+  {
+    title: "Best Gifts for Her",
+    description: "Beautiful gifts for girlfriends, wives & sisters",
+    href: "/guides/best-gifts-for-her",
+    emoji: "👠",
+  },
+  {
+    title: "Cozy Gifts",
+    description: "Warm, comfort-focused presents",
+    href: "/guides/cozy-christmas-gifts",
+    emoji: "🧣",
+  },
+  {
+    title: "Gifts Under $50",
+    description: "Great value picks at every price point",
+    href: "/guides/best-gifts-under-50",
+    emoji: "💰",
+  },
+];
+---
+
+<BaseLayout title="Gifts for Her" description="Find the perfect gift for the women in your life. Gift guides for moms, girlfriends, wives, sisters, and more.">
+  <section class="bg-gradient-to-br from-christmas-red to-pink-600 text-white py-16 px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <span class="text-6xl mb-4 block">👠</span>
+      <h1 class="text-4xl md:text-5xl font-display font-bold mb-4">
+        Gifts for Her
+      </h1>
+      <p class="text-xl text-gray-200 max-w-2xl mx-auto">
+        From luxe self-care to everyday essentials, find thoughtful gifts she'll love.
+      </p>
+    </div>
+  </section>
+
+  <section class="max-w-7xl mx-auto px-4 py-12">
+    <h2 class="text-2xl font-display font-bold text-pine mb-8">Gift Guides for Her</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {relatedGuides.map(guide => (
+        <GiftGuideCard {...guide} />
+      ))}
+    </div>
+  </section>
+
+  <section class="bg-gray-50 py-12 px-4">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-display font-bold text-pine mb-6">Tips for Shopping for Her</h2>
+      <div class="prose-custom">
+        <ul class="space-y-3">
+          <li><strong>Pay attention:</strong> Notice what she browses but doesn't buy</li>
+          <li><strong>Upgrade her essentials:</strong> Nicer versions of things she uses daily</li>
+          <li><strong>Self-care wins:</strong> Items she wouldn't splurge on herself</li>
+          <li><strong>Personal touches:</strong> Monograms or customization add meaning</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

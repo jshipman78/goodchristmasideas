@@ -1,0 +1,80 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import GiftGuideCard from '../../components/GiftGuideCard.astro';
+
+const relatedGuides = [
+  {
+    title: "Gifts for Mom",
+    description: "Thoughtful presents she'll love",
+    href: "/guides/thoughtful-gifts-for-mom",
+    emoji: "👩",
+  },
+  {
+    title: "Gifts for Dad",
+    description: "Practical gifts he'll actually use",
+    href: "/guides/gifts-for-dad-who-has-everything",
+    emoji: "👨",
+  },
+  {
+    title: "Cozy Gifts",
+    description: "Comfort-focused presents for relaxation",
+    href: "/guides/cozy-christmas-gifts",
+    emoji: "🧣",
+  },
+  {
+    title: "Tech Gifts",
+    description: "Gadgets to make life easier",
+    href: "/guides/best-tech-gifts",
+    emoji: "📱",
+  },
+];
+---
+
+<BaseLayout title="Gifts for Parents" description="Find meaningful gifts for mom and dad. Thoughtful picks that show how much you care.">
+  <section class="bg-gradient-to-br from-pine to-christmas-green text-white py-16 px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <span class="text-6xl mb-4 block">👨‍👩‍👧</span>
+      <h1 class="text-4xl md:text-5xl font-display font-bold mb-4">
+        Gifts for Parents
+      </h1>
+      <p class="text-xl text-gray-200 max-w-2xl mx-auto">
+        Show mom and dad you care with gifts that match their interests and make their lives a little better.
+      </p>
+    </div>
+  </section>
+
+  <section class="max-w-7xl mx-auto px-4 py-12">
+    <h2 class="text-2xl font-display font-bold text-pine mb-8">Gift Guides for Parents</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {relatedGuides.map(guide => (
+        <GiftGuideCard {...guide} />
+      ))}
+    </div>
+  </section>
+
+  <section class="bg-gray-50 py-12 px-4">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-display font-bold text-pine mb-6">Gift Ideas by Interest</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <h3 class="font-bold text-lg mb-3">For the Homebody Parent</h3>
+          <ul class="text-gray-600 text-sm space-y-2">
+            <li>Luxury blankets and throws</li>
+            <li>Quality coffee or tea sets</li>
+            <li>Streaming subscriptions</li>
+            <li>Comfortable slippers</li>
+          </ul>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <h3 class="font-bold text-lg mb-3">For the Active Parent</h3>
+          <ul class="text-gray-600 text-sm space-y-2">
+            <li>Fitness trackers</li>
+            <li>Quality outdoor gear</li>
+            <li>Sports equipment upgrades</li>
+            <li>Experience gifts (classes, events)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,126 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import GiftGuideCard from '../components/GiftGuideCard.astro';
+
+const budgetGuides = [
+  {
+    title: "Gifts Under $25",
+    description: "Budget-friendly ideas that don't feel cheap",
+    href: "/guides/best-gifts-under-25",
+    emoji: "💵",
+    itemCount: 40
+  },
+  {
+    title: "Gifts Under $50",
+    description: "Great value picks for any recipient",
+    href: "/guides/best-gifts-under-50",
+    emoji: "💰",
+    itemCount: 45
+  },
+  {
+    title: "Stocking Stuffers",
+    description: "Small gifts under $25",
+    href: "/guides/best-stocking-stuffers",
+    emoji: "🧦",
+    itemCount: 50
+  },
+  {
+    title: "White Elephant Gifts",
+    description: "Fun picks for $15-35 gift exchanges",
+    href: "/guides/funny-white-elephant-gifts",
+    emoji: "🐘",
+    itemCount: 20
+  },
+];
+---
+
+<BaseLayout title="Shop by Budget" description="Find the perfect gift at any price point. Gift guides organized by budget from stocking stuffers to splurge-worthy picks.">
+  <section class="bg-gradient-to-br from-christmas-gold to-yellow-500 text-pine py-16 px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <span class="text-6xl mb-4 block">💰</span>
+      <h1 class="text-4xl md:text-5xl font-display font-bold mb-4">
+        Shop by Budget
+      </h1>
+      <p class="text-xl text-pine/80 max-w-2xl mx-auto">
+        Great gifts exist at every price point. Find the perfect present without breaking the bank.
+      </p>
+    </div>
+  </section>
+
+  <section class="max-w-7xl mx-auto px-4 py-12">
+    <h2 class="text-2xl font-display font-bold text-pine mb-8">Budget Gift Guides</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {budgetGuides.map(guide => (
+        <GiftGuideCard {...guide} />
+      ))}
+    </div>
+  </section>
+
+  <section class="bg-gray-50 py-12 px-4">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-display font-bold text-pine mb-6">Budget Shopping Tips</h2>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <h3 class="font-bold text-lg mb-3">Making Budget Gifts Feel Special</h3>
+          <ul class="text-gray-600 text-sm space-y-2">
+            <li>Focus on quality over quantity</li>
+            <li>Invest in nice wrapping</li>
+            <li>Add a heartfelt card</li>
+            <li>Choose useful over novelty</li>
+          </ul>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-sm">
+          <h3 class="font-bold text-lg mb-3">Smart Shopping Strategies</h3>
+          <ul class="text-gray-600 text-sm space-y-2">
+            <li>Start shopping early for deals</li>
+            <li>Compare prices across retailers</li>
+            <li>Check for bundles and sets</li>
+            <li>Consider consumables (food, beauty)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="max-w-4xl mx-auto px-4 py-12">
+    <h2 class="text-2xl font-display font-bold text-pine mb-6">Quick Budget Guide</h2>
+    <div class="overflow-x-auto">
+      <table class="w-full bg-white rounded-xl shadow-sm">
+        <thead class="bg-gray-50">
+          <tr>
+            <th class="px-6 py-3 text-left text-sm font-semibold text-gray-900">Budget</th>
+            <th class="px-6 py-3 text-left text-sm font-semibold text-gray-900">Best For</th>
+            <th class="px-6 py-3 text-left text-sm font-semibold text-gray-900">Top Pick</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-200">
+          <tr>
+            <td class="px-6 py-4 text-sm text-gray-900">Under $15</td>
+            <td class="px-6 py-4 text-sm text-gray-600">Stocking stuffers, coworkers</td>
+            <td class="px-6 py-4 text-sm text-gray-600">Burt's Bees, PopSockets</td>
+          </tr>
+          <tr>
+            <td class="px-6 py-4 text-sm text-gray-900">$15-25</td>
+            <td class="px-6 py-4 text-sm text-gray-600">White elephant, acquaintances</td>
+            <td class="px-6 py-4 text-sm text-gray-600">Darn Tough Socks, card games</td>
+          </tr>
+          <tr>
+            <td class="px-6 py-4 text-sm text-gray-900">$25-50</td>
+            <td class="px-6 py-4 text-sm text-gray-600">Friends, extended family</td>
+            <td class="px-6 py-4 text-sm text-gray-600">YETI Rambler, Echo Dot</td>
+          </tr>
+          <tr>
+            <td class="px-6 py-4 text-sm text-gray-900">$50-100</td>
+            <td class="px-6 py-4 text-sm text-gray-600">Close friends, immediate family</td>
+            <td class="px-6 py-4 text-sm text-gray-600">AirPods, Kindle</td>
+          </tr>
+          <tr>
+            <td class="px-6 py-4 text-sm text-gray-900">$100+</td>
+            <td class="px-6 py-4 text-sm text-gray-600">Spouse, parents, special occasions</td>
+            <td class="px-6 py-4 text-sm text-gray-600">Apple Watch, Dyson products</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</BaseLayout>
