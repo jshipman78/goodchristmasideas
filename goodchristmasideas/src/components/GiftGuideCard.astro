@@ -1,0 +1,43 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  href: string;
+  image?: string;
+  emoji?: string;
+  itemCount?: number;
+}
+
+const { title, description, href, image, emoji = "🎁", itemCount } = Astro.props;
+---
+
+<a href={href} class="card group block">
+  <div class="relative h-48 bg-gradient-to-br from-christmas-green/10 to-christmas-red/10 flex items-center justify-center">
+    {image ? (
+      <img 
+        src={image} 
+        alt={title}
+        class="w-full h-full object-cover"
+        loading="lazy"
+      />
+    ) : (
+      <span class="text-6xl group-hover:scale-110 transition-transform duration-300">
+        {emoji}
+      </span>
+    )}
+  </div>
+  
+  <div class="p-5">
+    <h3 class="font-display font-bold text-xl text-pine mb-2 group-hover:text-christmas-red transition-colors">
+      {title}
+    </h3>
+    <p class="text-gray-600 text-sm mb-3">
+      {description}
+    </p>
+    {itemCount && (
+      <span class="text-xs text-christmas-green font-medium">
+        {itemCount} gift ideas →
+      </span>
+    )}
+  </div>
+</a>

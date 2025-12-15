@@ -1,0 +1,178 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import GiftGuideCard from '../components/GiftGuideCard.astro';
+
+const giftGuides = [
+  {
+    title: "Gifts for Dad",
+    description: "Practical, thoughtful gifts he'll actually use",
+    href: "/guides/gifts-for-dad-who-has-everything",
+    emoji: "👨",
+    itemCount: 25
+  },
+  {
+    title: "Gifts for Mom",
+    description: "Heartfelt presents to show her you care",
+    href: "/guides/thoughtful-gifts-for-mom",
+    emoji: "👩",
+    itemCount: 30
+  },
+  {
+    title: "Gifts for Him",
+    description: "Top picks for boyfriends, husbands & brothers",
+    href: "/guides/best-gifts-for-him",
+    emoji: "🎩",
+    itemCount: 28
+  },
+  {
+    title: "Gifts for Her",
+    description: "Beautiful gifts for girlfriends, wives & sisters",
+    href: "/guides/best-gifts-for-her",
+    emoji: "👠",
+    itemCount: 32
+  },
+  {
+    title: "Gifts for Kids",
+    description: "Fun, educational toys they'll love",
+    href: "/guides/best-toys-for-kids",
+    emoji: "🧸",
+    itemCount: 35
+  },
+  {
+    title: "Gifts for Teens",
+    description: "Cool gifts that won't get an eye roll",
+    href: "/guides/cool-gifts-for-teens",
+    emoji: "🎮",
+    itemCount: 24
+  },
+  {
+    title: "Gifts Under $25",
+    description: "Budget-friendly ideas that don't feel cheap",
+    href: "/guides/best-gifts-under-25",
+    emoji: "💵",
+    itemCount: 40
+  },
+  {
+    title: "Gifts Under $50",
+    description: "Great value picks for any recipient",
+    href: "/guides/best-gifts-under-50",
+    emoji: "💰",
+    itemCount: 45
+  },
+  {
+    title: "White Elephant Gifts",
+    description: "Hilarious crowd-pleasers for gift exchanges",
+    href: "/guides/funny-white-elephant-gifts",
+    emoji: "🐘",
+    itemCount: 20
+  },
+  {
+    title: "Stocking Stuffers",
+    description: "Small but mighty gift ideas",
+    href: "/guides/best-stocking-stuffers",
+    emoji: "🧦",
+    itemCount: 50
+  },
+  {
+    title: "Tech Gifts",
+    description: "Gadgets for the tech lover in your life",
+    href: "/guides/best-tech-gifts",
+    emoji: "📱",
+    itemCount: 30
+  },
+  {
+    title: "Cozy Gifts",
+    description: "Warm, comfort-focused presents",
+    href: "/guides/cozy-christmas-gifts",
+    emoji: "🧣",
+    itemCount: 22
+  }
+];
+---
+
+<BaseLayout title="Find the Perfect Christmas Gift">
+  <!-- Hero Section -->
+  <section class="relative bg-gradient-to-br from-pine to-christmas-green text-white py-20 px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <h1 class="text-4xl md:text-6xl font-display font-bold mb-6">
+        Find the Perfect Gift 🎁
+      </h1>
+      <p class="text-xl md:text-2xl text-gray-200 mb-8 max-w-2xl mx-auto">
+        Curated gift guides to help you find thoughtful presents for everyone on your list—without the stress.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="#guides" class="btn-primary bg-christmas-red hover:bg-red-700">
+          Browse Gift Guides
+        </a>
+        <a href="/quiz" class="btn-secondary bg-white/20 hover:bg-white/30">
+          Take the Gift Quiz
+        </a>
+      </div>
+    </div>
+    
+    <!-- Decorative elements -->
+    <div class="absolute bottom-0 left-0 right-0 h-16 bg-snow" style="clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 100%)"></div>
+  </section>
+  
+  <!-- Gift Guides Grid -->
+  <section id="guides" class="max-w-7xl mx-auto px-4 py-16">
+    <h2 class="text-3xl font-display font-bold text-pine text-center mb-4">
+      Christmas Gift Guides for 2024
+    </h2>
+    <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
+      Whether you're shopping for family, friends, or coworkers, we've got you covered with hand-picked recommendations at every price point.
+    </p>
+    
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      {giftGuides.map(guide => (
+        <GiftGuideCard {...guide} />
+      ))}
+    </div>
+  </section>
+  
+  <!-- Trust Section -->
+  <section class="bg-gray-50 py-16 px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-2xl font-display font-bold text-pine mb-8">
+        Why Trust Our Recommendations?
+      </h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div>
+          <span class="text-4xl mb-4 block">🔍</span>
+          <h3 class="font-bold text-lg mb-2">Carefully Curated</h3>
+          <p class="text-gray-600 text-sm">Every product is hand-selected based on reviews, quality, and value.</p>
+        </div>
+        <div>
+          <span class="text-4xl mb-4 block">⭐</span>
+          <h3 class="font-bold text-lg mb-2">Highly Rated</h3>
+          <p class="text-gray-600 text-sm">We only recommend products with excellent customer reviews.</p>
+        </div>
+        <div>
+          <span class="text-4xl mb-4 block">💰</span>
+          <h3 class="font-bold text-lg mb-2">Best Value</h3>
+          <p class="text-gray-600 text-sm">Quality gifts at fair prices—no overpriced duds here.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Newsletter CTA -->
+  <section class="max-w-4xl mx-auto px-4 py-16 text-center">
+    <h2 class="text-2xl font-display font-bold text-pine mb-4">
+      Get Gift Ideas in Your Inbox 📬
+    </h2>
+    <p class="text-gray-600 mb-6">
+      Subscribe for exclusive deals, new gift guides, and last-minute inspiration.
+    </p>
+    <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+      <input 
+        type="email" 
+        placeholder="Enter your email"
+        class="flex-grow px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-christmas-green"
+      />
+      <button type="submit" class="btn-secondary whitespace-nowrap">
+        Subscribe
+      </button>
+    </form>
+  </section>
+</BaseLayout>

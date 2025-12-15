@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply font-body text-gray-800 bg-snow;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-block px-6 py-3 bg-christmas-red text-white font-semibold rounded-lg 
+           hover:bg-red-700 transition-colors duration-200;
+  }
+  
+  .btn-secondary {
+    @apply inline-block px-6 py-3 bg-christmas-green text-white font-semibold rounded-lg 
+           hover:bg-green-700 transition-colors duration-200;
+  }
+  
+  .card {
+    @apply bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-200;
+  }
+  
+  .prose-custom {
+    @apply prose prose-lg max-w-none prose-headings:font-display prose-headings:text-pine
+           prose-a:text-christmas-red prose-a:no-underline hover:prose-a:underline;
+  }
+}

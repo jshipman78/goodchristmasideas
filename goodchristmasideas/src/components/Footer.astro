@@ -1,0 +1,99 @@
+---
+const currentYear = new Date().getFullYear();
+
+const categories = [
+  { href: '/category/for-him', label: 'Gifts for Him' },
+  { href: '/category/for-her', label: 'Gifts for Her' },
+  { href: '/category/for-kids', label: 'Gifts for Kids' },
+  { href: '/category/for-teens', label: 'Gifts for Teens' },
+  { href: '/category/for-parents', label: 'Gifts for Parents' },
+  { href: '/category/for-grandparents', label: 'Gifts for Grandparents' },
+];
+
+const budgetLinks = [
+  { href: '/budget/under-25', label: 'Under $25' },
+  { href: '/budget/under-50', label: 'Under $50' },
+  { href: '/budget/under-100', label: 'Under $100' },
+  { href: '/budget/luxury', label: 'Luxury Gifts' },
+];
+---
+
+<footer class="bg-pine text-white mt-auto">
+  <div class="max-w-7xl mx-auto px-4 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <!-- Brand -->
+      <div class="md:col-span-1">
+        <a href="/" class="flex items-center gap-2 mb-4">
+          <span class="text-3xl">🎄</span>
+          <span class="font-display font-bold text-xl">Good Christmas Ideas</span>
+        </a>
+        <p class="text-gray-300 text-sm">
+          Helping you find the perfect gifts for everyone on your list since 2024.
+        </p>
+      </div>
+      
+      <!-- Gift Categories -->
+      <div>
+        <h3 class="font-display font-bold text-lg mb-4">Gift Guides</h3>
+        <ul class="space-y-2">
+          {categories.map(link => (
+            <li>
+              <a href={link.href} class="text-gray-300 hover:text-christmas-gold transition-colors text-sm">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      
+      <!-- Budget Guides -->
+      <div>
+        <h3 class="font-display font-bold text-lg mb-4">Shop by Budget</h3>
+        <ul class="space-y-2">
+          {budgetLinks.map(link => (
+            <li>
+              <a href={link.href} class="text-gray-300 hover:text-christmas-gold transition-colors text-sm">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      
+      <!-- Legal -->
+      <div>
+        <h3 class="font-display font-bold text-lg mb-4">Information</h3>
+        <ul class="space-y-2">
+          <li>
+            <a href="/about" class="text-gray-300 hover:text-christmas-gold transition-colors text-sm">
+              About Us
+            </a>
+          </li>
+          <li>
+            <a href="/privacy" class="text-gray-300 hover:text-christmas-gold transition-colors text-sm">
+              Privacy Policy
+            </a>
+          </li>
+          <li>
+            <a href="/affiliate-disclosure" class="text-gray-300 hover:text-christmas-gold transition-colors text-sm">
+              Affiliate Disclosure
+            </a>
+          </li>
+          <li>
+            <a href="/contact" class="text-gray-300 hover:text-christmas-gold transition-colors text-sm">
+              Contact
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Bottom Bar -->
+    <div class="border-t border-gray-700 mt-8 pt-8 text-center text-sm text-gray-400">
+      <p>© {currentYear} GoodChristmasIdeas.com. All rights reserved.</p>
+      <p class="mt-2">
+        As an Amazon Associate and affiliate partner, we earn from qualifying purchases.
+      </p>
+    </div>
+  </div>
+</footer>
