@@ -1,6 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import GiftGuideCard from '../components/GiftGuideCard.astro';
+import { getDailyContent, getDaysUntilChristmas, getLastUpdatedString } from '../lib/content-merger';
+
+const dailyContent = await getDailyContent();
+const daysUntilChristmas = getDaysUntilChristmas();
+const lastUpdated = getLastUpdatedString(dailyContent);
 
 // Featured guides with new visual product grids
 const featuredGuides = [
@@ -102,12 +107,37 @@ const giftGuides = [
   <!-- Hero Section -->
   <section class="relative bg-gradient-to-br from-pine to-christmas-green text-white py-20 px-4">
     <div class="max-w-4xl mx-auto text-center">
+      <!-- Christmas Countdown -->
+      {daysUntilChristmas <= 30 && (
+        <div class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
+          <span class="text-2xl">🎄</span>
+          <span class="font-bold">
+            {daysUntilChristmas === 0
+              ? "Merry Christmas!"
+              : daysUntilChristmas === 1
+                ? "1 day until Christmas!"
+                : `${daysUntilChristmas} days until Christmas!`}
+          </span>
+        </div>
+      )}
+
       <h1 class="text-4xl md:text-6xl font-display font-bold mb-6">
         Find the Perfect Gift 🎁
       </h1>
-      <p class="text-xl md:text-2xl text-gray-200 mb-8 max-w-2xl mx-auto">
-        Curated gift guides to help you find thoughtful presents for everyone on your list—without the stress.
+      <p class="text-xl md:text-2xl text-gray-200 mb-4 max-w-2xl mx-auto">
+        {dailyContent.seasonalMessage}
       </p>
+
+      <!-- Freshness Indicator -->
+      <p class="text-sm text-gray-300 mb-8">
+        <span class="inline-flex items-center gap-1">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          {lastUpdated}
+        </span>
+      </p>
+
       <div class="flex flex-wrap justify-center gap-4">
         <a href="#guides" class="btn-primary bg-christmas-red hover:bg-red-700">
           Browse Gift Guides
@@ -117,7 +147,7 @@ const giftGuides = [
         </a>
       </div>
     </div>
-    
+
     <!-- Decorative elements -->
     <div class="absolute bottom-0 left-0 right-0 h-16 bg-snow" style="clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 100%)"></div>
   </section>
