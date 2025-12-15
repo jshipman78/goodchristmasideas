@@ -1,0 +1,5 @@
+export const AMAZON_TAG = import.meta.env.PUBLIC_AMAZON_TAG || 'memoofadomeen-20';
+
+export function amazonLink(asin: string): string {
+  return `https://www.amazon.com/dp/${asin}?tag=${AMAZON_TAG}`;
+}
