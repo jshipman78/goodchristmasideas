@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import GiftGuideCard from '../../components/GiftGuideCard.astro';
+
+const relatedGuides = [
+  {
+    title: "Cozy Gifts",
+    description: "Warm, comfort-focused presents",
+    href: "/guides/cozy-christmas-gifts",
+    emoji: "🧣",
+  },
+  {
+    title: "Gifts for Her",
+    description: "Thoughtful presents for women",
+    href: "/guides/best-gifts-for-her",
+    emoji: "👠",
+  },
+  {
+    title: "Gifts for Mom",
+    description: "Show her you care",
+    href: "/guides/thoughtful-gifts-for-mom",
+    emoji: "👩",
+  },
+  {
+    title: "Gifts Under $50",
+    description: "Great value lifestyle picks",
+    href: "/guides/best-gifts-under-50",
+    emoji: "💰",
+  },
+];
+---
+
+<BaseLayout title="Lifestyle Gifts" description="Comfort, relaxation, and lifestyle gifts for anyone who appreciates the finer things.">
+  <section class="bg-gradient-to-br from-amber-500 to-orange-600 text-white py-16 px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <span class="text-6xl mb-4 block">🧣</span>
+      <h1 class="text-4xl md:text-5xl font-display font-bold mb-4">
+        Lifestyle Gifts
+      </h1>
+      <p class="text-xl text-white/90 max-w-2xl mx-auto">
+        Cozy blankets, self-care treats, and comfort-focused presents for the homebody in your life.
+      </p>
+    </div>
+  </section>
+
+  <section class="max-w-7xl mx-auto px-4 py-12">
+    <h2 class="text-2xl font-display font-bold text-pine mb-8">Lifestyle Gift Guides</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {relatedGuides.map(guide => (
+        <GiftGuideCard {...guide} />
+      ))}
+    </div>
+  </section>
+</BaseLayout>

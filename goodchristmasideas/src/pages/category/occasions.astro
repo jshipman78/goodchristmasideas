@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import GiftGuideCard from '../../components/GiftGuideCard.astro';
+
+const relatedGuides = [
+  {
+    title: "White Elephant Gifts",
+    description: "Hilarious crowd-pleasers for gift exchanges",
+    href: "/guides/funny-white-elephant-gifts",
+    emoji: "🐘",
+  },
+  {
+    title: "Stocking Stuffers",
+    description: "Small but mighty gift ideas",
+    href: "/guides/best-stocking-stuffers",
+    emoji: "🧦",
+  },
+  {
+    title: "Gifts Under $25",
+    description: "Budget-friendly ideas",
+    href: "/guides/best-gifts-under-25",
+    emoji: "💵",
+  },
+  {
+    title: "Gifts Under $50",
+    description: "Great value picks",
+    href: "/guides/best-gifts-under-50",
+    emoji: "💰",
+  },
+];
+---
+
+<BaseLayout title="Gift Ideas by Occasion" description="Find the perfect gift for any occasion. White elephant exchanges, stocking stuffers, and more.">
+  <section class="bg-gradient-to-br from-christmas-red to-pink-600 text-white py-16 px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <span class="text-6xl mb-4 block">🎉</span>
+      <h1 class="text-4xl md:text-5xl font-display font-bold mb-4">
+        Gifts by Occasion
+      </h1>
+      <p class="text-xl text-white/90 max-w-2xl mx-auto">
+        Whether it's a white elephant exchange, stocking stuffers, or a special celebration, find the right gift for the moment.
+      </p>
+    </div>
+  </section>
+
+  <section class="max-w-7xl mx-auto px-4 py-12">
+    <h2 class="text-2xl font-display font-bold text-pine mb-8">Occasion Gift Guides</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {relatedGuides.map(guide => (
+        <GiftGuideCard {...guide} />
+      ))}
+    </div>
+  </section>
+</BaseLayout>
