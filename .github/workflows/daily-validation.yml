@@ -1,0 +1,61 @@
+name: Daily Product Validation
+
+on:
+  # Run daily at 6 AM UTC (1 AM EST / 10 PM PST)
+  schedule:
+    - cron: '0 6 * * *'
+
+  # Allow manual trigger from GitHub Actions tab
+  workflow_dispatch:
+
+jobs:
+  validate-products:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run product validation
+        id: validate
+        continue-on-error: true
+        run: node scripts/validate-products.js
+
+      - name: Create issue if broken links found
+        if: steps.validate.outcome == 'failure'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+
+            // Check if there's already an open issue for broken links
+            const issues = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'broken-links'
+            });
+
+            if (issues.data.length === 0) {
+              await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: '🚨 Broken Amazon Product Links Detected',
+                body: `The daily validation found broken Amazon product links.\n\nPlease run \`node scripts/validate-products.js\` locally to see the full report and fix the broken ASINs.\n\n**Date:** ${new Date().toISOString().split('T')[0]}\n\n---\n*This issue was automatically created by the daily validation workflow.*`,
+                labels: ['broken-links', 'urgent']
+              });
+            }
+
+      - name: Summary
+        run: |
+          echo "## Product Validation Complete" >> $GITHUB_STEP_SUMMARY
+          if [ "${{ steps.validate.outcome }}" == "failure" ]; then
+            echo "⚠️ Broken links were detected. Check the logs above." >> $GITHUB_STEP_SUMMARY
+          else
+            echo "✅ All product links are valid!" >> $GITHUB_STEP_SUMMARY
+          fi
