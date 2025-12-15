@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import DealCard from '../../components/DealCard.astro';
+import { products, categories, guideInfo } from '../../data/products/gifts-for-dad';
+---
+
+<BaseLayout title={guideInfo.title} description={guideInfo.description}>
+  <!-- Hero Section -->
+  <section class="bg-gradient-to-br from-pine to-christmas-green text-white py-12 px-4">
+    <div class="max-w-6xl mx-auto">
+      <nav class="text-sm text-white/70 mb-4">
+        <a href="/" class="hover:text-white">Home</a>
+        <span class="mx-2">/</span>
+        <a href="/category/for-him" class="hover:text-white">For Him</a>
+        <span class="mx-2">/</span>
+        <span class="text-white">Gifts for Dad</span>
+      </nav>
+      <h1 class="text-3xl md:text-4xl font-display font-bold mb-4">
+        {guideInfo.title}
+      </h1>
+      <p class="text-lg text-white/90 max-w-3xl mb-4">
+        {guideInfo.description}
+      </p>
+      <div class="flex flex-wrap gap-3 text-sm">
+        <span class="bg-white/20 px-3 py-1 rounded-full">💰 {guideInfo.budget}</span>
+        <span class="bg-white/20 px-3 py-1 rounded-full">🎁 {products.length} Products</span>
+        <span class="bg-white/20 px-3 py-1 rounded-full">📅 Updated Dec 2025</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter Bar -->
+  <section class="bg-white border-b sticky top-16 z-40">
+    <div class="max-w-6xl mx-auto px-4 py-3">
+      <div class="flex flex-wrap items-center gap-2">
+        <span class="text-sm font-medium text-gray-600 mr-2">Filter:</span>
+        {categories.map((cat) => (
+          <button
+            class="filter-btn px-4 py-1.5 text-sm font-medium rounded-full border transition-colors data-[active=true]:bg-christmas-red data-[active=true]:text-white data-[active=true]:border-christmas-red hover:border-christmas-red"
+            data-category={cat.id}
+            data-active={cat.id === "all" ? "true" : "false"}
+          >
+            {cat.label}
+          </button>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Products Grid -->
+  <section class="max-w-6xl mx-auto px-4 py-8">
+    <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      {products.map((product) => (
+        <div class="product-item" data-category={product.category}>
+          <DealCard {...product} />
+        </div>
+      ))}
+    </div>
+
+    <!-- No Results Message -->
+    <div id="no-results" class="hidden text-center py-12">
+      <p class="text-gray-500">No products found in this category.</p>
+    </div>
+  </section>
+
+  <!-- Affiliate Disclosure -->
+  <section class="max-w-6xl mx-auto px-4 pb-12">
+    <aside class="p-6 bg-gray-50 rounded-xl border border-gray-200">
+      <p class="text-sm text-gray-600">
+        <strong>Affiliate Disclosure:</strong> This page contains affiliate links. If you purchase through these links,
+        we may earn a small commission at no extra cost to you. This helps support our site and allows us to continue
+        creating helpful gift guides. Thank you for your support! 🎄
+      </p>
+    </aside>
+  </section>
+</BaseLayout>
+
+<script>
+  // Filter functionality
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const productItems = document.querySelectorAll('.product-item');
+  const noResults = document.getElementById('no-results');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const category = btn.getAttribute('data-category');
+
+      // Update active states
+      filterBtns.forEach(b => b.setAttribute('data-active', 'false'));
+      btn.setAttribute('data-active', 'true');
+
+      // Filter products
+      let visibleCount = 0;
+      productItems.forEach(item => {
+        const itemCategory = item.getAttribute('data-category');
+        if (category === 'all' || itemCategory === category) {
+          item.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+
+      // Show/hide no results message
+      if (noResults) {
+        noResults.classList.toggle('hidden', visibleCount > 0);
+      }
+    });
+  });
+</script>

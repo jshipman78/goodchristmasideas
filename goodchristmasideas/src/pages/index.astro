@@ -2,21 +2,43 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import GiftGuideCard from '../components/GiftGuideCard.astro';
 
-const giftGuides = [
+// Featured guides with new visual product grids
+const featuredGuides = [
   {
     title: "Gifts for Dad",
     description: "Practical, thoughtful gifts he'll actually use",
-    href: "/guides/gifts-for-dad-who-has-everything",
+    href: "/gifts/for-dad",
     emoji: "👨",
-    itemCount: 25
+    itemCount: 8,
+    badge: "NEW"
   },
   {
     title: "Gifts for Mom",
     description: "Heartfelt presents to show her you care",
-    href: "/guides/thoughtful-gifts-for-mom",
+    href: "/gifts/for-mom",
     emoji: "👩",
-    itemCount: 30
+    itemCount: 10,
+    badge: "NEW"
   },
+  {
+    title: "Tech Gifts",
+    description: "Gadgets for the tech lover in your life",
+    href: "/gifts/tech",
+    emoji: "📱",
+    itemCount: 12,
+    badge: "Popular"
+  },
+  {
+    title: "Gifts Under $25",
+    description: "Budget-friendly ideas that don't feel cheap",
+    href: "/gifts/under-25",
+    emoji: "💵",
+    itemCount: 12,
+    badge: "Best Value"
+  },
+];
+
+const giftGuides = [
   {
     title: "Gifts for Him",
     description: "Top picks for boyfriends, husbands & brothers",
@@ -46,13 +68,6 @@ const giftGuides = [
     itemCount: 24
   },
   {
-    title: "Gifts Under $25",
-    description: "Budget-friendly ideas that don't feel cheap",
-    href: "/guides/best-gifts-under-25",
-    emoji: "💵",
-    itemCount: 40
-  },
-  {
     title: "Gifts Under $50",
     description: "Great value picks for any recipient",
     href: "/guides/best-gifts-under-50",
@@ -72,13 +87,6 @@ const giftGuides = [
     href: "/guides/best-stocking-stuffers",
     emoji: "🧦",
     itemCount: 50
-  },
-  {
-    title: "Tech Gifts",
-    description: "Gadgets for the tech lover in your life",
-    href: "/guides/best-tech-gifts",
-    emoji: "📱",
-    itemCount: 30
   },
   {
     title: "Cozy Gifts",
@@ -114,16 +122,48 @@ const giftGuides = [
     <div class="absolute bottom-0 left-0 right-0 h-16 bg-snow" style="clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 100%)"></div>
   </section>
   
-  <!-- Gift Guides Grid -->
+  <!-- Featured Guides with Product Images -->
   <section id="guides" class="max-w-7xl mx-auto px-4 py-16">
-    <h2 class="text-3xl font-display font-bold text-pine text-center mb-4">
-      Christmas Gift Guides for 2025
-    </h2>
-    <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
-      Whether you're shopping for family, friends, or coworkers, we've got you covered with hand-picked recommendations at every price point.
+    <div class="flex items-center justify-center gap-2 mb-4">
+      <span class="bg-christmas-red text-white text-xs font-bold px-2 py-1 rounded">NEW</span>
+      <h2 class="text-3xl font-display font-bold text-pine text-center">
+        Featured Gift Guides
+      </h2>
+    </div>
+    <p class="text-gray-600 text-center mb-8 max-w-2xl mx-auto">
+      Browse our upgraded guides with product images, prices, and easy filtering.
     </p>
-    
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+      {featuredGuides.map(guide => (
+        <a href={guide.href} class="group block bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-all duration-300 border-2 border-christmas-red/20 hover:border-christmas-red">
+          <div class="relative h-32 bg-gradient-to-br from-christmas-green/10 to-christmas-red/10 flex items-center justify-center">
+            <span class="text-5xl group-hover:scale-110 transition-transform duration-300">{guide.emoji}</span>
+            {guide.badge && (
+              <span class="absolute top-2 right-2 bg-christmas-red text-white text-xs font-bold px-2 py-1 rounded">
+                {guide.badge}
+              </span>
+            )}
+          </div>
+          <div class="p-4">
+            <h3 class="font-display font-bold text-lg text-pine mb-1 group-hover:text-christmas-red transition-colors">
+              {guide.title}
+            </h3>
+            <p class="text-gray-600 text-sm mb-2">{guide.description}</p>
+            <span class="text-xs text-christmas-green font-medium">
+              {guide.itemCount} products with images →
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <!-- More Gift Guides -->
+    <h3 class="text-2xl font-display font-bold text-pine text-center mb-8">
+      More Gift Guides
+    </h3>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
       {giftGuides.map(guide => (
         <GiftGuideCard {...guide} />
       ))}
