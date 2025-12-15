@@ -32,7 +32,41 @@
   }
   
   .prose-custom {
-    @apply prose prose-lg max-w-none prose-headings:font-display prose-headings:text-pine
-           prose-a:text-christmas-red prose-a:no-underline hover:prose-a:underline;
+    @apply max-w-none;
+  }
+  
+  .prose-custom h1,
+  .prose-custom h2,
+  .prose-custom h3 {
+    @apply font-display text-pine mt-8 mb-4;
+  }
+  
+  .prose-custom h1 {
+    @apply text-3xl;
+  }
+  
+  .prose-custom h2 {
+    @apply text-2xl;
+  }
+  
+  .prose-custom h3 {
+    @apply text-xl;
+  }
+  
+  .prose-custom p {
+    @apply mb-4 leading-relaxed;
+  }
+  
+  .prose-custom a {
+    @apply text-christmas-red no-underline hover:underline;
+  }
+  
+  .prose-custom ul,
+  .prose-custom ol {
+    @apply mb-4 pl-6;
+  }
+  
+  .prose-custom li {
+    @apply mb-2;
   }
 }
