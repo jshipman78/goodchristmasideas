@@ -1,18 +1,15 @@
 ---
-import StarRating from './StarRating.astro';
-
 interface Props {
   title: string;
   description: string;
   image: string;
   price: string;
   amazonUrl: string;
-  rating?: number;
   prime?: boolean;
   badge?: string;
 }
 
-const { title, description, image, price, amazonUrl, rating = 4.5, prime = true, badge } = Astro.props;
+const { title, description, image, price, amazonUrl, prime = true, badge } = Astro.props;
 ---
 
 <div class="card group">
@@ -49,15 +46,10 @@ const { title, description, image, price, amazonUrl, rating = 4.5, prime = true,
     </h3>
     
     <!-- Description -->
-    <p class="text-sm text-gray-600 mb-3 line-clamp-2">
+    <p class="text-sm text-gray-600 mb-4 line-clamp-2">
       {description}
     </p>
-    
-    <!-- Rating -->
-    <div class="mb-3">
-      <StarRating rating={rating} color="text-christmas-gold" />
-    </div>
-    
+
     <!-- Price & CTA -->
     <div class="flex items-center justify-between">
       <span class="text-2xl font-bold text-pine">{price}</span>

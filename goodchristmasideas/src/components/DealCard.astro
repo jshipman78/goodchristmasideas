@@ -1,18 +1,15 @@
 ---
-import StarRating from './StarRating.astro';
-
 interface Props {
   title: string;
   description: string;
   price: string;
   originalPrice?: string;
-  rating: number;
   amazonUrl: string;
   badge?: string;
   prime?: boolean;
 }
 
-const { title, description, price, originalPrice, rating, amazonUrl, badge, prime = true } = Astro.props;
+const { title, description, price, originalPrice, amazonUrl, badge, prime = true } = Astro.props;
 
 // Extract ASIN from Amazon URL
 function extractASIN(url: string): string | null {
@@ -91,14 +88,9 @@ const discount = originalPrice ? Math.round((1 - parseFloat(price.replace(/[^0-9
     </a>
 
     <!-- Description -->
-    <p class="text-sm text-gray-600 mb-3 line-clamp-2 flex-grow">
+    <p class="text-sm text-gray-600 mb-4 line-clamp-2 flex-grow">
       {description}
     </p>
-
-    <!-- Rating -->
-    <div class="mb-3">
-      <StarRating rating={rating} />
-    </div>
 
     <!-- Price Section -->
     <div class="flex items-end justify-between mt-auto">
